@@ -42,3 +42,13 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.product-content {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.product-image {
+    width: 150px;
+}
