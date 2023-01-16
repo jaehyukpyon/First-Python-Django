@@ -25,3 +25,6 @@ def detail(request, pk):
         'price': product.price,
         'location': product.location   
     })
+    
+def write_template(request):
+    return render(request, 'product_write.html')
