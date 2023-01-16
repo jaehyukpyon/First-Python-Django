@@ -5,6 +5,9 @@ from django.db import models
 class Product(models.Model):
     # title, content, price, location
     
+    # PK를 직접 선언하는 방법
+    # id = models.IntegerField(primary_Key=True)
+    
     title = models.CharField(max_length=256, verbose_name="상품 이름")
     content = models.TextField(verbose_name="상품 설명")
     price = models.IntegerField(verbose_name='상품 가격')

@@ -27,4 +27,4 @@ def detail(request, pk):
     })
     
 def write_template(request):
-    return render(request, 'product_write.html')
+    return render(request, 'product_write2.html')

@@ -111,6 +111,7 @@ TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
+#use timezone
 USE_TZ = False
 
 
