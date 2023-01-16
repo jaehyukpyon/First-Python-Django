@@ -20,8 +20,14 @@ def main(request):
     #     'member': member
     # })
     
-    members = Member.objects.all()
+    # members = Member.objects.all()    
+    # return render(request, 'index.html', {
+    #     'members': members
+    # })
     
+    # members = Member.objects.filter(age__gte=41)
+    # members = Member.objects.filter(name='신한')
+    members = Member.objects.filter(name__contains='테스')
     return render(request, 'index.html', {
         'members': members
     })
