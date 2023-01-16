@@ -9,11 +9,23 @@
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <h3>메인페이지 - 상품 리스트</h3>
+    <!-- <h3>메인페이지 - 상품 리스트</h3>
     <ol>
         {% for product in products %}
         <li>상품 제목: {{ product.title }}, 상품 설명: {{ product.content }}, 상품 가격: {{ product.price }}, 상품 거래 희망 지역: {{ product.location }}</li>
         {% endfor %}
-    </ol>
+    </ol> -->
+
+    <div class="main-title">
+        <div class="overlay">
+            <h1>당당마켓</h1>
+            <span>가장 가까운 중고거래 플랫폼</span>
+        </div>
+    </div>
+    <ul>
+        {% for product in products %}
+        <li>{{ product.title }} : {{ product.price }} : {{ product.location }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
