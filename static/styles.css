@@ -52,3 +52,7 @@ body {
 .product-image {
     width: 150px;
 }
+
+.modal-body img {
+    width: 100%;
+}
