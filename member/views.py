@@ -30,7 +30,7 @@ def main(request):
     
     # members = Member.objects.filter(name__contains='테스')
     
-    members = Member.objects.filter(name__contains='테스').order_by('-age') # descending
-    return render(request, 'index.html', {
-        'members': members
-    })
+    # members = Member.objects.filter(name__contains='테스').order_by('-age') # descending
+    # return render(request, 'index.html', {
+    #     'members': members
+    # })
