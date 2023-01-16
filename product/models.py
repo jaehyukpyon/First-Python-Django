@@ -12,4 +12,5 @@ class Product(models.Model):
     
     class Meta:
         db_table = 'shinhan_product'
-        
+        verbose_name = '상품'
+        verbose_name_plural = '상품(들)'        
