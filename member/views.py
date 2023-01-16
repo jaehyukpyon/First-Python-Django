@@ -15,8 +15,13 @@ def main(request):
     
     # return render(request, 'index.html')
     
-    member = Member.objects.get(pk=1)
+    # member = Member.objects.get(pk=100)    
+    # return render(request, 'index.html', {
+    #     'member': member
+    # })
+    
+    members = Member.objects.all()
     
     return render(request, 'index.html', {
-        'member': member
+        'members': members
     })

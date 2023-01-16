@@ -7,6 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello Python! {{ member.name }}, {{ member.age }}</h1>
+    <!-- <h1>Hello Python! {{ member.name }}, {{ member.age }}</h1> -->
+
+    <ol>
+        {% for member in members %}
+        <li>{{ member.name }}, {{ member.age }}</li>
+        {% endfor %}
+    </ol>
 </body>
 </html>
