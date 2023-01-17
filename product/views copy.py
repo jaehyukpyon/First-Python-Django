@@ -34,7 +34,7 @@ def detail(request, pk):
     
 def write_template(request):
     
-    if not request.user.is_authenticated:
+    if not request.session.get('user_id'):
         return redirect('/member/login/')
     
     if request.method == 'POST':

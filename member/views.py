@@ -3,7 +3,7 @@ from django.http.response import HttpResponse
 #from .models import Member
 from django.contrib.auth.hashers import check_password, make_password
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
  
 # Create your views here.
 
@@ -24,7 +24,7 @@ def signin(request):
     return render(request, 'login.html')
 
 def signout(request):    
-    
+    logout(request)
     return redirect('/')
 
 def register(request):
