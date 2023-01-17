@@ -23,5 +23,5 @@ urlpatterns = [
     # path('', main),
     path('', main),
     path('product/<int:pk>/', detail),
-    path('product/write', write_template)
+    path('product/write/', write_template)
 ]

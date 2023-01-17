@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http.response import JsonResponse
 from .models import Product
 
@@ -27,4 +27,15 @@ def detail(request, pk):
     })
     
 def write_template(request):
+    if request.method == 'POST':
+        print(request.method) # dictionary 자료형
+        product = Product(
+            title = request.POST.get('title'),
+            content = request.POST.get('content'),
+            price = request.POST.get('price'),
+            location = request.POST.get('location')
+        )
+        product.save()
+        return redirect('/')
+    
     return render(request, 'product_write2.html')
