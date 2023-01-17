@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -7,6 +8,10 @@ class Product(models.Model):
     
     # PK를 직접 선언하는 방법
     # id = models.IntegerField(primary_Key=True)
+    
+    # models.SET_NULL if default=1
+    # models.SET_DEFAULT if null=True
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="회원")
     
     title = models.CharField(max_length=256, verbose_name="상품 이름")
     content = models.TextField(verbose_name="상품 설명")

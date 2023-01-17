@@ -7,7 +7,8 @@ $(document).ready(function () {
                 $('#detailModalLocation').text(result.location);
                 $('#detailModalPrice').text(result.price)
                 $('#detailModalContent').html(result.content);
-                $("#detailModalImage").attr("src", result.image)
+                $("#detailModalUsername").text("판매자 ID: " + result.username);
+                $("#detailModalImage").attr("src", result.image);
                 $('#detailModal').modal('show');
             });
     });
