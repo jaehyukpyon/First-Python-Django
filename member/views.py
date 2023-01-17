@@ -37,14 +37,24 @@ def main(request):
     pass
 
 def login(request):
-    if request.method == 'GET':
-        return render(request, 'login.html')
-    elif request.method == 'POST':
+    
+    if request.method == 'POST':
         user_id = request.POST.get('user_id')
         password = request.POST.get('password')
-        new_member = Member(
-            user_id = user_id,
-            password = password
-        )
-        print(new_member)
-        return redirect('/')
+        # new_member = Member(
+        #     user_id = user_id,
+        #     password = password
+        # )
+        # print(new_member)
+        # return redirect('/')
+        if Member.objects.filter(user_id=user_id).exists():
+            member = Member.objects.get(user_id=user_id)
+            
+            if member.password == password:
+                # login 성공
+                request.session['user_pk'] = member.id
+                request.session['user_id'] = member.user_id
+                return redirect('/')
+            
+    # 로그인 실패
+    return render(request, 'login.html')
