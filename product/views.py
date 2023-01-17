@@ -11,7 +11,7 @@ from .models import Product
 
 def main(request):
     
-    products = Product.objects.all()    
+    products = Product.objects.all().order_by('-id')
     return render(request, 'product.html', {
         'products': products
     })
@@ -22,7 +22,7 @@ def detail(request, pk):
     if product.image:
         image = product.image.url
     else:
-        image = 'default'
+        image = '/static/bg.jpg'
     
     return JsonResponse({
         'title': product.title,

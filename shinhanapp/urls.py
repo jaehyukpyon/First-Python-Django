@@ -20,12 +20,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from product.views import main, detail, write_template
 
+from member.views import login
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', main),
     path('', main),
     path('product/<int:pk>/', detail),
-    path('product/write/', write_template)
+    path('product/write/', write_template),    
+    path('member/login/', login)
 ]
 
 urlpatterns += static('/media/', document_root=settings.MEDIA_ROOT)

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
 from .models import Member
  
@@ -34,3 +34,17 @@ def main(request):
     # return render(request, 'index.html', {
     #     'members': members
     # })
+    pass
+
+def login(request):
+    if request.method == 'GET':
+        return render(request, 'login.html')
+    elif request.method == 'POST':
+        user_id = request.POST.get('user_id')
+        password = request.POST.get('password')
+        new_member = Member(
+            user_id = user_id,
+            password = password
+        )
+        print(new_member)
+        return redirect('/')

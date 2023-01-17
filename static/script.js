@@ -6,13 +6,8 @@ $(document).ready(function () {
                 $('#detailModalTitle').text(result.title);
                 $('#detailModalLocation').text(result.location);
                 $('#detailModalPrice').text(result.price)
-                $('#detailModalContent').text(result.content);
-
-                if (result.image === "default") {
-                    $("#detailModalImage").attr("src", '/static/bg.jpg')
-                } else {
-                    $("#detailModalImage").attr("src", result.image)
-                }
+                $('#detailModalContent').html(result.content);
+                $("#detailModalImage").attr("src", result.image)
                 $('#detailModal').modal('show');
             });
     });
