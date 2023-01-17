@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
 from .models import Member
-from django.contrib.auth.hashers import check_password
+from django.contrib.auth.hashers import check_password, make_password
  
 # Create your views here.
 
@@ -68,3 +68,23 @@ def logout(request):
         del(request.session['user_id'])
     
     return redirect('/')
+
+def register(request):
+    if request.method == 'POST':
+        user_id = request.POST.get('user_id')
+        password = request.POST.get('password')
+        enc_password = make_password(password)
+        name = request.POST.get('name')
+        age = request.POST.get('age')
+        
+        new_member = Member(
+            user_id = user_id,
+            password = enc_password,
+            name = name,
+            age = age
+        ) 
+        new_member.save()
+        print(new_member)
+        return redirect('/member/login/')
+            
+    return render(request, 'register.html')
