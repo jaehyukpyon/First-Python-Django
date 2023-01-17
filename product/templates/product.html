@@ -56,7 +56,11 @@
                 <button type="button" class="list-group-item list-group-item-action" id="{{ product.id }}">
                     <div class="d-flex align-items-center">
                         <div class="flex-shrink-0">
-                            <img src="/static/prod1.jpg" alt="itemimage" class="product-image">
+                            {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="itemimage" class="product-image">
+                            {% else %}
+                            <img src="/static/bg.jpg" alt="itemimage" class="product-image">
+                            {% endif %}
                         </div>
                         <div class="flex-grow-1 ms-3 text-end">
                             {{ product.title }}<br>
@@ -78,7 +82,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
             <div class="modal-body">
-                <img src="/static/bg.jpg" alt="modalimage">
+                <img src="/static/bg.jpg" alt="modalimage" id="detailModalImage">
                 <div id="detailModalLocation"></div>
                 <div id="detailModalPrice"></div>
                 <div id="detailModalContent"></div>

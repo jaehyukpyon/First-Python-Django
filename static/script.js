@@ -7,7 +7,13 @@ $(document).ready(function () {
                 $('#detailModalLocation').text(result.location);
                 $('#detailModalPrice').text(result.price)
                 $('#detailModalContent').text(result.content);
-                $('#detailModal').modal('show')
+
+                if (result.image === "default") {
+                    $("#detailModalImage").attr("src", '/static/bg.jpg')
+                } else {
+                    $("#detailModalImage").attr("src", result.image)
+                }
+                $('#detailModal').modal('show');
             });
     });
 });

@@ -19,11 +19,17 @@ def main(request):
 def detail(request, pk):
     product = Product.objects.get(pk=pk)
     
+    if product.image:
+        image = product.image.url
+    else:
+        image = 'default'
+    
     return JsonResponse({
         'title': product.title,
         'content': product.content,
         'price': product.price,
-        'location': product.location
+        'location': product.location,
+        'image': image
     })
     
 def write_template(request):
