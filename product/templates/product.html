@@ -26,7 +26,7 @@
         <div class="overlay">
             <h1>
                 당당마켓<br>
-                <span>가장 가까운 중고거래 플랫폼 {{ request.session.user_id }}</span>
+                <span>가장 가까운 중고거래 플랫폼 user: {{ request.session.user_id }}</span>
             </h1>
             <!-- <br><br><br>
             <span>가장 가까운 중고거래 플랫폼</span> -->
@@ -51,6 +51,15 @@
     </div> -->
 
     <div class="product-content">
+
+        <div>
+            {% if request.session.user_id %}
+            <a href="/member/logout/">로그아웃</a>
+            {% else %}
+            <a href="/member/login/">로그인</a>
+            {% endif %}
+        </div>
+
         <div class="list-group list-group-flush">
             {% for product in products %} 
                 <button type="button" class="list-group-item list-group-item-action" id="{{ product.id }}">
@@ -71,9 +80,12 @@
                 </button>
             {% endfor %}
         </div>
+
+        {% if request.session.user_id %}
         <div class="text-end mt-3">
             <a role="button" href="/product/write/" class="btn btn-primary">상품 등록</a>
         </div>
+        {% endif %}
     </div>
 
     <!-- Modal -->

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
 from .models import Member
+from django.contrib.auth.hashers import check_password
  
 # Create your views here.
 
@@ -50,7 +51,8 @@ def login(request):
         if Member.objects.filter(user_id=user_id).exists():
             member = Member.objects.get(user_id=user_id)
             
-            if member.password == password:
+            #if member.password == password:
+            if check_password(password, member.password): 
                 # login 성공
                 request.session['user_pk'] = member.id
                 request.session['user_id'] = member.user_id
@@ -58,3 +60,11 @@ def login(request):
             
     # 로그인 실패
     return render(request, 'login.html')
+
+def logout(request):
+    if 'user_pk' in request.session:
+        del(request.session['user_pk'])
+    if 'user_id' in request.session:
+        del(request.session['user_id'])
+    
+    return redirect('/')

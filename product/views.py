@@ -33,6 +33,10 @@ def detail(request, pk):
     })
     
 def write_template(request):
+    
+    if not request.session.get('user_id'):
+        return redirect('/member/login/')
+    
     if request.method == 'POST':
         print('자료형 체크1 ', request.method) # POST
         print('자료형 체크2 ', request.FILES.get('image')) # monitor.jpg
