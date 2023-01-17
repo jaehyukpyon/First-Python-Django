@@ -11,7 +11,8 @@ class Product(models.Model):
     title = models.CharField(max_length=256, verbose_name="상품 이름")
     content = models.TextField(verbose_name="상품 설명")
     price = models.IntegerField(verbose_name='상품 가격')
-    location = models.CharField(max_length=500, verbose_name="상품 거래 희망 위치")   
+    location = models.CharField(max_length=500, verbose_name="상품 거래 희망 위치")  
+    image = models.FileField(null=True, blank=True, verbose_name="상품 이미지") # null true는 데이터베이스의 자료형, blank=true는 파이썬 코드 안에서 값을 안 넣어도 된다.
     
     def __str__(self):
         return f"title: {self.title}, content: {self.content}, price: {self.price}, location: {self.location}" 

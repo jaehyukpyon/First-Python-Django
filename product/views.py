@@ -23,18 +23,22 @@ def detail(request, pk):
         'title': product.title,
         'content': product.content,
         'price': product.price,
-        'location': product.location   
+        'location': product.location
     })
     
 def write_template(request):
     if request.method == 'POST':
-        print(request.method) # dictionary 자료형
+        print('자료형 체크1 ', request.method) # POST
+        print('자료형 체크2 ', request.FILES.get('image')) # monitor.jpg
+        
         product = Product(
             title = request.POST.get('title'),
             content = request.POST.get('content'),
             price = request.POST.get('price'),
-            location = request.POST.get('location')
+            location = request.POST.get('location'),
+            image = request.FILES.get('image')
         )
+        # print(product.id) 에러 발생
         product.save()
         return redirect('/')
     
