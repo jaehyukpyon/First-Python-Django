@@ -43,8 +43,7 @@ def write_template(request):
         print('자료형 체크2 ', request.FILES.get('image')) # monitor.jpg
         
         product = Product(
-            user = request.user,
-            
+            user = request.user,            
             title = request.POST.get('title'),
             content = request.POST.get('content'),
             price = request.POST.get('price'),
